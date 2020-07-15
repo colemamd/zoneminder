@@ -1,6 +1,6 @@
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:18.04-1.0.0
 
-LABEL maintainer="dlandon"
+LABEL maintainer="colemamd"
 
 ENV	DEBCONF_NONINTERACTIVE_SEEN="true" \
 	DEBIAN_FRONTEND="noninteractive" \

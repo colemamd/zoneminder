@@ -5,7 +5,7 @@ services:
         image: colemamd/zoneminder:latest
         restart: unless-stopped
         ports:
-            - 8443:443/tcp
+            - 443:443/tcp
             - 9000:9000/tcp
         network_mode: "bridge"
         privileged: true
@@ -23,3 +23,4 @@ services:
         volumes:
             - /docker/zoneminder:/config:rw
             - /cctv:/var/cache/zoneminder:rw
+            - /etc/zm/ssl:/ssl:ro

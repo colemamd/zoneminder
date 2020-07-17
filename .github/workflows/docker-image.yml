@@ -24,7 +24,7 @@ jobs:
         buildx-version: latest
         qemu-version: latest
     - name: Build the Docker image
-      run: docker buildx build .  --file Dockerfile --tag colemamd/zoneminder:latest --platform linux/arm/v7,linux/armhf,linux/arm64 --output "type=image,push=false"
+      run: docker buildx build .  --file Dockerfile --tag colemamd/zoneminder:latest --platform linux/arm/v7,linux/armhf --output "type=image,push=false"
     - name: Publish to Docker
       uses: zenato/docker-action@master
       with:

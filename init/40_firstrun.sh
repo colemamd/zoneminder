@@ -476,14 +476,23 @@ if [ "$INSTALL_HOOK" == "1" ]; then
 
 	echo "Hook installation completed"
 
-	# compile opencv
-	if [ ! -f /root/setup.py ]; then
-		if [ `cat /config/opencv/opencv_ok` = 'yes' ]; then
-			if [ -x /config/opencv/opencv.sh ]; then
-				/config/opencv/opencv.sh quiet >/dev/null &
-			fi
-		fi
-	fi
+	# # compile opencv -- ORIGINAL
+	# if [ ! -f /root/setup.py ]; then
+	# 	if [ `cat /config/opencv/opencv_ok` = 'yes' ]; then
+	# 		if [ -x /config/opencv/opencv.sh ]; then
+	# 			/config/opencv/opencv.sh quiet >/dev/null &
+	# 		fi
+	# 	fi
+	# fi
+
+# compile opencv modified for Bionic armhf
+  if [ ! -f /root/setup.py ] then
+    if [ `cat /config/opencv/opencv_ok` = 'yes' ]; then
+      if [ -x /config/opencv/opencv_arm.sh ]; then
+        /config/opencv/opencv.sh quiet >/dev/null &
+      fi
+    fi
+  fi
 
 	mv /root/zmeventnotification/setup.py /root/setup.py
 fi

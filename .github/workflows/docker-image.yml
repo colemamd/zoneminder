@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  build:
+  buildx:
 
     runs-on: ubuntu-18.04
 
@@ -24,11 +24,11 @@ jobs:
         buildx-version: latest
         qemu-version: latest
     - name: Build the Docker image
-      run: docker buildx build .  --file Dockerfile --tag colemamd/zoneminder:latest --platform linux/armhf --output "type=image,push=false"
+      run: docker buildx build .  --file Dockerfile --tag colemamd/zoneminder:latest --platform linux/arm/v7 --output "type=image,push=false"
     - name: Publish to Docker
       uses: zenato/docker-action@master
       with:
         username: ${{ secrets.DOCKER_LOGIN }}
         password: ${{ secrets.DOCKER_PASS }}
         repository: colemamd/zoneminder
-        tag: 1.1
+        tag: 1.3
